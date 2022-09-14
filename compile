@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cp 34-QMK-Ferris-Sweep/keymap.c qmk_firmware/keyboards/ferris/keymaps/benvallak/keymap.c
+
+cd qmk_firmware
+
+qmk compile -kb ferris/0_2/compact -km benvallak
+
+cd ..
