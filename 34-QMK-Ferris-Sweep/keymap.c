@@ -30,11 +30,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
       KC_Q,   KC_W,     KC_E,     KC_R,    KC_T,    						KC_Y,   KC_U,   KC_I,   KC_O,  KC_P,
   //------------------------------------------------------------------------------       ----------------------------------------------------------------------------
-      KC_A,    MT(MOD_LCTL, KC_S),    MT(MOD_LALT,KC_D),    MT(MOD_LGUI,KC_F),    KC_G,  	KC_H,   MT(MOD_LGUI,KC_J),   MT(MOD_LALT,KC_K),  MT(MOD_LCTL, KC_L),  TD(DANCE_2),
+      KC_A,    MT(MOD_LCTL, KC_S),    MT(MOD_LALT,KC_D),    MT(MOD_LGUI,KC_F),    MT(MOD_LSFT,KC_G),  	MT(MOD_LSFT, KC_H),   MT(MOD_LGUI,KC_J),   MT(MOD_LALT,KC_K),  MT(MOD_LCTL, KC_L),  TD(DANCE_2),
   //------------------------------------------------------------------------------       ----------------------------------------------------------------------------
       KC_Z,   KC_X,  TD(DANCE_4),   TD(DANCE_5),  TD(DANCE_6),     							KC_N,   KC_M,   KC_COMM,   TD(DANCE_1),   TD(DANCE_3),
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
-		    					KC_BSPC , OSM(MOD_LSFT),      TO(1), KC_SPACE
+		    					KC_BSPC , KC_CAPS,      TO(1), KC_SPACE
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
   ),
 
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
     KC_TAB,  KC_LCTL, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,LSFT(KC_EQL),   KC_EQL,   KC_4, KC_5, KC_6,   KC_ENTER,
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
-    RESET,   KC_KP_ASTERISK, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_DOT,   KC_0,   KC_1, KC_2, KC_3,   KC_COMM,
+    RESET,   KC_LSFT, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_DOT,   KC_0,   KC_1, KC_2, KC_3,   KC_COMM,
   //---------------------------------------------------------------------------------------       ----------------------------------------------------------------------------------
 	KC_LGUI, TO(0) ,TO(2), KC_LALT
   )
@@ -696,8 +696,8 @@ void dance_56_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state.step = dance_56_dance_step(state);
     switch (dance_state.step) {
         case SINGLE_TAP: register_code16(KC_TAB); break;
-        case SINGLE_HOLD: register_code16(LGUI(KC_TAB)); break;
-        case DOUBLE_TAP: register_code16(KC_TAB); register_code16(KC_TAB); break;
+        case SINGLE_HOLD: register_code16(KC_TAB); break;
+        case DOUBLE_TAP: register_code16(LGUI(KC_TAB)); break;
         case DOUBLE_SINGLE_TAP: tap_code16(KC_TAB); register_code16(KC_TAB);
     }
 }
@@ -706,8 +706,8 @@ void dance_56_reset(qk_tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state.step) {
         case SINGLE_TAP: unregister_code16(KC_TAB); break;
-        case SINGLE_HOLD: unregister_code16(LGUI(KC_TAB)); break;
-        case DOUBLE_TAP: unregister_code16(KC_TAB); break;
+        case SINGLE_HOLD: unregister_code16(KC_TAB); break;
+        case DOUBLE_TAP: unregister_code16(LGUI(KC_TAB)); break;
         case DOUBLE_SINGLE_TAP: unregister_code16(KC_TAB); break;
     }
     dance_state.step = 0;
@@ -931,7 +931,7 @@ void dance_63_finished(qk_tap_dance_state_t *state, void *user_data) {
     dance_state.step = dance_63_dance_step(state);
     switch (dance_state.step) {
         case SINGLE_TAP: register_code16(KC_RIGHT); break;
-        case SINGLE_HOLD: register_code16(LGUI(KC_RIGHT)); break;
+        case SINGLE_HOLD: register_code16(LALT(KC_RIGHT)); break;
         case DOUBLE_TAP: register_code16(KC_RIGHT); register_code16(KC_RIGHT); break;
         case DOUBLE_SINGLE_TAP: tap_code16(KC_RIGHT); register_code16(KC_RIGHT);
     }
